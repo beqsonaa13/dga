@@ -7,7 +7,7 @@
 
 <p>ძიება მონაცემებში: {{searchData | json}}</p>
 
-<div class="result-container">
+<div class="result-container" *ngIf="searchValue">
   <h2>ძიების შედეგი</h2>
   <div class="search-results">
     <div class="result" *ngFor="let percentage of percentages; let i = index">

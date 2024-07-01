@@ -1,4 +1,4 @@
-import { JsonPipe, NgForOf } from "@angular/common";
+import { JsonPipe, NgForOf, NgIf } from "@angular/common";
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButton } from "@angular/material/button";
@@ -18,7 +18,8 @@ import { MatProgressBar } from "@angular/material/progress-bar";
     MatButton,
     JsonPipe,
     NgForOf,
-    MatProgressBar
+    MatProgressBar,
+    NgIf
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
