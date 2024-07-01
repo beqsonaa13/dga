@@ -1,0 +1,18 @@
+<div class="search-container">
+  <mat-form-field>
+    <mat-label>ძებნა</mat-label>
+    <input [(ngModel)]="searchValue" (ngModelChange)="onSearch()" matInput placeholder="Ex. ქონება">
+  </mat-form-field>
+</div>
+
+<p>ძიება მონაცემებში: {{searchData | json}}</p>
+
+<div class="result-container">
+  <h2>ძიების შედეგი</h2>
+  <div class="search-results">
+    <div class="result" *ngFor="let percentage of percentages; let i = index">
+      <p><span class="code">{{searchValue}}</span> <span class="code">{{searchData[i]}}</span>-ს ემთხვევა {{percentage}}%-ით.</p>
+      <mat-progress-bar mode="determinate" [value]="percentage"></mat-progress-bar>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<mat-card class="movie-container" *ngIf="movie.image?.url">
+  <mat-card-header>
+    <mat-card-title>{{movie.title}}</mat-card-title>
+    <mat-card-subtitle>{{movie.titleType}} ({{movie.year}})</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image class="movie-image" [src]="movie.image.url" alt="x">
+</mat-card>

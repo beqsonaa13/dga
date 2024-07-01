@@ -1,0 +1,10 @@
+<div class="search-container">
+  <mat-form-field>
+    <mat-label>Movie title</mat-label>
+    <input [formControl]="searchControl" matInput placeholder="Ex. Starwars">
+  </mat-form-field>
+  <button class="search-btn" type="button" mat-flat-button color="primary" (click)="getMovies()">ძებნა</button>
+</div>
+<div class="movies-container">
+  <app-imdb-movie *ngFor="let movie of movies" [movie]="movie"></app-imdb-movie>
+</div>

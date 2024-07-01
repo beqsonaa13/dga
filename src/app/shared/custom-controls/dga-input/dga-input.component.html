@@ -1,0 +1,4 @@
+<mat-form-field>
+  <mat-label>{{label}}</mat-label>
+  <input [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="onChange($event)" (blur)="onTouched()" matInput>
+</mat-form-field>

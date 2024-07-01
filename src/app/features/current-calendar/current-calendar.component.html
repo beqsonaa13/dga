@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title>{{ currentMonth }}</mat-card-title>
+  <mat-grid-list cols="7" rowHeight="50px">
+    <mat-grid-tile *ngFor="let day of weekDays" [colspan]="1" [rowspan]="1">
+      <div class="week-day-cell">{{ day }}</div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let day of getFlatDays()" [colspan]="1" [rowspan]="1"
+                   [ngClass]="{
+                     'current-month': day.isCurrentMonth,
+                     'today': day.isToday,
+                     'other-month': !day.isCurrentMonth,
+                     'holiday': day.isHoliday
+                     }">
+      <div class="day-cell">
+        {{ day.date.format('D') }}
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

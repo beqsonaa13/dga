@@ -1,0 +1,49 @@
+<button class="add-button w-50 mb-3" mat-raised-button color="primary" (click)="addJob()">Add Job</button>
+<form [formGroup]="form">
+  <div formArrayName="jobs">
+    <div *ngFor="let job of jobs.controls; let i = index" [formGroupName]="i" class="job-group">
+      <div>
+        <button class="delete-button mb-3" mat-raised-button color="primary" (click)="removeJob(i)">Remove Job</button>
+        <div class="job">
+          <app-dga-input formControlName="companyName" [label]="'Company Name'"></app-dga-input>
+          <mat-form-field>
+            <mat-label>Web Page*</mat-label>
+            <input formControlName="webPage" matInput>
+            <mat-error>Please enter a valid web page address.</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+          <button class="add-button" mat-raised-button color="primary" (click)="addPosition(job)">Add Position</button>
+        </div>
+      </div>
+      <ng-container formArrayName="positions">
+        <div class="position-group" *ngFor="let position of getPositions(job).controls; let j = index" [formGroupName]="j">
+          <button class="delete-button mb-3" mat-raised-button color="primary" (click)="removePosition(job, j)">Remove Position</button>
+          <div class="position">
+            <app-dga-input formControlName="positionName" [label]="'Position Name'"></app-dga-input>
+            <app-dga-input formControlName="positionLevel" [label]="'Position Level'"></app-dga-input>
+            <mat-form-field appearance="fill">
+              <mat-label>Position Description</mat-label>
+              <textarea matInput formControlName="positionDescription"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>From date</mat-label>
+              <input matInput [matDatepicker]="fromPicker" formControlName="fromDate">
+              <mat-datepicker-toggle matIconSuffix [for]="fromPicker"></mat-datepicker-toggle>
+              <mat-datepicker #fromPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>To Date</mat-label>
+              <input matInput [matDatepicker]="toPicker" formControlName="toDate">
+              <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+              <mat-datepicker #toPicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</form>
+<button *ngIf="jobs?.length! > 0" class="add-button w-50 submit-button" mat-raised-button color="primary" (click)="submit()">Submit</button>
